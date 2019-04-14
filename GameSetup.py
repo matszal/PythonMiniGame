@@ -16,7 +16,6 @@ BLACK_COLOR = (0, 0, 0)
 # clock setup
 clock = pygame.time.Clock()
 
-# game setup class
 class Game:
     # refresh rate
     TICK_RATE = 60
@@ -119,5 +118,4 @@ new_game = Game(SCREEN_TITLE, SCREEN_WIDTH, SCREEN_HEIGHT)
 new_game.run_game_loop()
 
 pygame.quit()
-
 quit
