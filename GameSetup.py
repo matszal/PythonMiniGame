@@ -57,6 +57,8 @@ class Game:
             enemy_character.move(SCREEN_WIDTH)
             enemy_character.draw(self.game_window)
             player_character.move(direction, SCREEN_HEIGHT)
+            if player_character.detect_collision(enemy_character):
+                is_game_over = True
             player_character.draw(self.game_window)
 
             pygame.display.update()
@@ -95,6 +97,17 @@ class Player(GameObject, object):
             self.y_pos = -40
         elif self.y_pos > max_height-150:
             self.y_pos = max_height-150
+
+    def detect_collision(self,other_body):
+        if self.y_pos+70 > other_body.y_pos + other_body.height:
+            return False
+        elif self.y_pos-50 + self.height < other_body.y_pos:
+            return False
+        if self.x_pos+60 > other_body.x_pos + other_body.width:
+            return False
+        elif self.x_pos-60 + self.width < other_body.x_pos:
+            return False
+        return True
 
 
 class Enemy(GameObject, object):
